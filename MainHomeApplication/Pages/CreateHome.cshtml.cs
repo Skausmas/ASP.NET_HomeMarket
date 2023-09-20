@@ -11,7 +11,7 @@ namespace MainHomeApplication.Pages
         public void OnGet()
         {
         }
-        public IActionResult OnPost([FromServices] IGetHomeIndex idService, [FromServices] IAddHome addHomeService,[FromServices] IGetHomeImagePath imagePath, string address, string ownerName, IFormFile file) {
+        public IActionResult OnPost([FromServices] IGetHomeIndex idService, [FromServices] IAddHome addHomeService,[FromServices] IGetHomeImagePath imagePath, string ownerName, string address, IFormFile file) {
             Home home = new Home(idService.Index(), address, ownerName);
             addHomeService.AddHome(home);
             FileStream stream = new FileStream("wwwroot/"+imagePath.GetImagePath(home), FileMode.Create);
