@@ -1,9 +1,11 @@
-﻿namespace MainHomeApplication
+﻿using System.Reflection.Metadata;
+
+namespace MainHomeApplication
 {
     public interface IGetHomeIndex
     {
         public int Index();
-       
+
     }
     class HomeIndexGenerator : IGetHomeIndex
     {
@@ -20,5 +22,17 @@
         }
     }
 
+    public interface IGetHomeImagePath
+    {
+        public string GetImagePath(Home home);
+    }
+
+    class HomePathGenerator: IGetHomeImagePath
+    {
+        public string GetImagePath(Home home)
+        {
+            return $"images/home_{home.id}.jpg";
+        }
+    }
 
 }

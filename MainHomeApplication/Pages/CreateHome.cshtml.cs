@@ -5,17 +5,16 @@ using Microsoft.AspNetCore.Authorization;
 
 namespace MainHomeApplication.Pages
 {
-    [Authorize]
+    //[Authorize]
     public class CreateHomeModel : PageModel
     {
         public void OnGet()
         {
         }
-        public IActionResult OnPost([FromServices] IGetHomeIndex idService, [FromServices] IAddHome addHomeService, string address, string ownerName, IFormFile file) {
-            addHomeService.AddHome(new Home(idService.Index(),address,ownerName));
-            var path = "wwwroot/images";
-            Directory.CreateDirectory(path);
-            FileStream stream = new FileStream(path + $"/home_{idService.Index()}.jpg", FileMode.Create);
+        public IActionResult OnPost([FromServices] IGetHomeIndex idService, [FromServices] IAddHome addHomeService,[FromServices] IGetHomeImagePath imagePath, string address, string ownerName, IFormFile file) {
+            Home home = new Home(idService.Index(), address, ownerName);
+            addHomeService.AddHome(home);
+            FileStream stream = new FileStream("wwwroot/"+imagePath.GetImagePath(home), FileMode.Create);
             file.CopyTo(stream);
             return RedirectToPage("Index");
         }
