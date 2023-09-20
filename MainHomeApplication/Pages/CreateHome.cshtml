@@ -1,0 +1,30 @@
+﻿@page
+@model MainHomeApplication.Pages.CreateHomeModel
+@{
+}
+
+<form method="post" id="createHomeForm" enctype="multipart/form-data">
+    <div class="container">
+        <div class="column">
+            <label>Адрес: </label>
+            <label>Имя влядельца: </label>
+
+        </div>
+        <div class="column">
+            <input type="text" name="ownerName" />
+            <input type="text" name="address" />
+            <input type="file" name="file" />
+        </div>
+        <input id="send_button" type="submit" value="Добавить" />
+    </div>
+</form>
+
+<script type="text/javascript">
+    document.getElementById("createHomeForm").addEventListener("submit", function (event) {
+        let elements = document.getElementById("createHomeForm").elements
+        if (elements.address.value == '' || elements.ownerName.value == '') {
+            alert("Все поля должны быть заполнены");
+            event.preventDefault();
+        }
+    },false)
+</script>

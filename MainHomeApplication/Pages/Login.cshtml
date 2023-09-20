@@ -1,0 +1,15 @@
+﻿@page
+@model MainHomeApplication.Pages.LoginModel
+<form method="post" enctype="multipart/form-data">
+    <div class="container">
+        <div class="column">
+            <label>E-Mail: </label>
+            <label>Password: </label>
+        </div>
+        <div class="column">
+            <input type="text" name="login" />
+            <input type="text" name="password" />
+        </div>
+        <input id="send_button" type="submit" value="Войти" />
+    </div>
+</form>

@@ -1,0 +1,29 @@
+﻿@page
+<p>
+    Текущий пользователь:
+    @{
+        if (PageContext.HttpContext.User.Identity.IsAuthenticated){
+
+            @PageContext.HttpContext.User.Identity.Name
+            
+        }
+        else
+        {
+            <a asp-page="Login">Войти</a>
+        }
+    }
+</p>
+<a asp-page="CreateHome">Добавить дом</a>
+<div class="homes-grid">
+    @foreach (Home home in Home.allHomes)
+    {     
+        <div class="home-card">
+            <p>Адрес: @home.address</p>
+            <p>Имя владельца: @home.ownerName</p>
+            @{
+                string imagePath = $"images/home_{home.id}.jpg";
+            }
+            <img src="@imagePath">
+        </div>
+    }
+</div>
