@@ -1,13 +1,13 @@
 ﻿@page
 @inject IGetHomeImagePath HomePathGenerator;
+@using System.Security.Claims;
 <h1>Home Market</h1>
 <p>
     Текущий пользователь:
     @{
         if (PageContext.HttpContext.User.Identity.IsAuthenticated){
 
-            @PageContext.HttpContext.User.Identity.Name
-            
+            @PageContext.HttpContext.User.FindFirst(ClaimTypes.Email).Value;   
         }
         else
         {

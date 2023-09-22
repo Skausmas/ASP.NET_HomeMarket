@@ -5,7 +5,7 @@ using Microsoft.AspNetCore.Authorization;
 
 namespace MainHomeApplication.Pages
 {
-    //[Authorize]
+    [Authorize]
     public class CreateHomeModel : PageModel
     {
         public void OnGet()
