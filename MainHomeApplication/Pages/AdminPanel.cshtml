@@ -1,0 +1,19 @@
+﻿@page
+@model MainHomeApplication.Pages.AdminPanel
+
+<h1>Список домов [@Home.allHomes.Count()]:</h1>
+<ul>
+    @foreach(Home home in Home.allHomes)
+    {
+        <li>ID: @home.id @home.address</li>
+    }
+</ul>
+<p>
+    <h1>Пользователи:</h1>
+    <ul>
+        @foreach(ServiceUser user in ServiceUser.users)
+        {
+            <li>@user.Email @user.PhoneNumber</li>
+        }
+    </ul>
+</p>

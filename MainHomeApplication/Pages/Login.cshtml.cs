@@ -21,11 +21,12 @@ namespace MainHomeApplication.Pages
             }
             var claims = new List<Claim> { new Claim(ClaimTypes.Email, user.Email),
                                            new Claim(ClaimTypes.MobilePhone,user.PhoneNumber),
-                                           new Claim(ClaimTypes.Gender,user.Gender)};
+                                           new Claim(ClaimTypes.Gender,user.Gender),
+                                           new Claim("access-level",user.AccessLevel)};
             ClaimsIdentity identity = new ClaimsIdentity(claims, "Cookies");
             await PageContext.HttpContext.SignInAsync(CookieAuthenticationDefaults.AuthenticationScheme, new ClaimsPrincipal(identity));
             Console.WriteLine(returnUrl);
-            return Redirect(returnUrl ?? "/Index.html");
+            return Redirect(returnUrl ?? "/Index");
         }
     }
 }
