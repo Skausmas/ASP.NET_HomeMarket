@@ -1,0 +1,31 @@
+﻿@page
+@model MainHomeApplication.Pages.RegistrationModel
+@{
+}
+<form method="post" id="createUser" enctype="multipart/form-data">
+    <div class="container">
+        <div class="column">
+            <label> Электронная почта: </label>
+            <label> Пароль: </label>
+            <label> Номер телефона: </label>
+            <label> Пол: </label>
+        </div>
+        <div class="column">
+            <input type="text" name="Email" />
+            <input type="text" name="Password" />
+            <input type="text" name="PhoneNumber" />
+            <input type="text" name="Gender" />
+        </div>
+        <input id="send_button" type="submit" value="Добавить" />
+    </div>
+</form>
+
+<script type="text/javascript">
+    document.getElementById("createHomeForm").addEventListener("submit", function (event) {
+        let elements = document.getElementById("createHomeForm").elements
+        if (elements.Email.value == '' || elements.Password.value == '' || elements.PhoneNumber.value == '') {
+            alert("Все поля должны быть заполнены");
+            event.preventDefault();
+        }
+    }, false)
+</script>
